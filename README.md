@@ -57,15 +57,7 @@ docker-compose up --build
 - Frontend : http://localhost:5173
 - API Backend : http://localhost:9090
 
-## Points de Terminaison API
 
-### Points de terminaison disponibles :
-- `GET /api/bon-de-commande` - Récupérer les données BDC (bon de commande)
-- `GET /api/site` - Récupérer les données de site
-- `GET /api/services` - Récupérer le catalogue de services
-- `GET /api/zones` - Récupérer les zones (nécessite une authentification)
-- `GET /api/users/id-by-email/{email}` - Obtenir l'ID utilisateur par email
-- `POST /api/auth/login` - Authentification utilisateur
 
 ### Authentification :
 La plupart des points de terminaison nécessitent une authentification JWT. Incluez le token dans l'en-tête Authorization :

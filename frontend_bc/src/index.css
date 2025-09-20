@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem; /* Slightly more rounded for modern feel */
+  
+  /* Light theme - Warm, professional, and easy on the eyes */
+  --background: #fdfdfd; /* Warm white instead of cold gray */
+  --foreground: #2c2c2c; /* Softer dark gray instead of harsh black */
+  --card: #ffffff; /* Pure white cards for clean separation */
+  --card-foreground: #2c2c2c;
+  --popover: #ffffff;
+  --popover-foreground: #2c2c2c;
+  --primary: #4f46e5; /* Modern indigo - professional yet approachable */
+  --primary-foreground: #ffffff;
+  --secondary: #6b7280; /* Warm gray instead of cold slate */
+  --secondary-foreground: #ffffff;
+  --muted: #f8f9fa; /* Very subtle warm gray */
+  --muted-foreground: #6b7280;
+  --accent: #f1f5f9; /* Light accent with warmth */
+  --accent-foreground: #374151;
+  --destructive: #ef4444; /* Softer red */
+  --border: #f0f0f0; /* Much subtler borders */
+  --input: #ffffff;
+  --ring: #4f46e5;
+  
+  /* Sidebar colors for light theme */
+  --sidebar: #fafbfc; /* Slightly different from background for definition */
+  --sidebar-foreground: #2c2c2c;
+  --sidebar-primary: #4f46e5;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f1f5f9;
+  --sidebar-accent-foreground: #374151;
+  --sidebar-border: #f0f0f0;
+  --sidebar-ring: #4f46e5;
+
+  /* Professional warm chart colors */
+  --chart-1: #4f46e5; /* Primary indigo */
+  --chart-2: #059669; /* Professional emerald */
+  --chart-3: #f59e0b; /* Warm amber */
+  --chart-4: #8b5cf6; /* Professional violet */
+  --chart-5: #ef4444; /* Warm red */
+}
+
+.dark {
+  /* Dark theme - Comfortable and sophisticated */
+  --background: #1a1a1a; /* Much lighter dark background */
+  --foreground: #f5f5f5; /* Softer white */
+  --card: #2a2a2a; /* Lighter cards for better contrast */
+  --card-foreground: #f5f5f5;
+  --popover: #2a2a2a;
+  --popover-foreground: #f5f5f5;
+  --primary: #6366f1; /* Brighter indigo for dark mode visibility */
+  --primary-foreground: #ffffff;
+  --secondary: #6b7280; /* Consistent warm gray */
+  --secondary-foreground: #f5f5f5;
+  --muted: #2a2a2a;
+  --muted-foreground: #9ca3af;
+  --accent: #374151; /* Subtle dark accent */
+  --accent-foreground: #f5f5f5;
+  --destructive: #f87171; /* Softer red for dark mode */
+  --border: #3a3a3a; /* Much subtler dark borders */
+  --input: #2a2a2a;
+  --ring: #6366f1;
+  
+  /* Sidebar colors for dark theme */
+  --sidebar: #222222; /* Slightly different from background */
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-primary: #6366f1;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #374151;
+  --sidebar-accent-foreground: #f5f5f5;
+  --sidebar-border: #3a3a3a;
+  --sidebar-ring: #6366f1;
+
+  /* Dark mode chart colors */
+  --chart-1: #6366f1;
+  --chart-2: #10b981;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #f87171;
+}
+
+@layer base {
+  html {
+    font-size: 90%; /* Slightly larger for better readability */
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    font-variation-settings: normal;
+    letter-spacing: -0.003em; /* Slightly less tight for comfort */
+    line-height: 1.6; /* Better line height for readability */
+  }
+  /* Ensure good readability on small screens */
+  @media (max-width: 640px) {
+    html {
+      font-size: 92%;
+    }
+  }
+}
+
+/* Enhanced typography for professional look */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--foreground);
+  line-height: 1.3;
+}
+
+/* Card styles with sophisticated shadows */
+.card, .bg-card {
+  background: var(--card);
+  color: var(--card-foreground);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: 
+    0 1px 3px 0 rgb(0 0 0 / 0.03),
+    0 1px 2px 0 rgb(0 0 0 / 0.06);
+  transition: 
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 12px 0 rgb(0 0 0 / 0.08),
+    0 2px 4px 0 rgb(0 0 0 / 0.05);
+  border-color: var(--border);
+}
+
+/* Premium input styling */
+input, .input, .bg-input {
+  background: var(--input);
+  color: var(--foreground);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem; /* More comfortable padding */
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: 
+    border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, .input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgb(79 70 229 / 0.08); /* Subtler focus ring */
+  background: var(--background);
+}
+
+input::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Professional button styling */
+button, .btn {
+  border-radius: var(--radius-md);
+  border: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  transition: 
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.1s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Primary button */
+.btn-primary, .bg-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.75rem 1.5rem; /* More comfortable padding */
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.btn-primary:hover, .bg-primary:hover {
+  background: rgb(67 56 202); /* Slightly darker on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-primary:active, .bg-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+/* Secondary button */
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-secondary:hover {
+  background: rgb(75 85 99);
+}
+
+/* Ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  border-color: var(--border);
+}
+
+/* Enhanced sidebar styling */
+.sidebar, .bg-sidebar {
+  background: var(--sidebar);
+  color: var(--sidebar-foreground);
+  border-right: 1px solid var(--sidebar-border);
+  backdrop-filter: blur(8px);
+  transition: 
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-menu-button {
+  border-radius: var(--radius-md);
+  transition: 
+    background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.sidebar-menu-button:hover {
+  background: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+}
+
+.sidebar-menu-button.active {
+  background: var(--sidebar-primary);
+  color: var(--sidebar-primary-foreground);
+  font-weight: 500;
+}
+
+.sidebar-menu-button.active::before {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20px;
+  background: var(--sidebar-primary);
+  border-radius: 0 2px 2px 0;
+}
+
+/* Professional scrollbar */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted-foreground);
+}
+
+/* Enhanced shadows for depth - much subtler */
+.shadow-xs {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+}
+
+.shadow-sm {
+  box-shadow: 
+    0 1px 3px 0 rgb(0 0 0 / 0.03),
+    0 1px 2px 0 rgb(0 0 0 / 0.06);
+}
+
+.shadow-md {
+  box-shadow: 
+    0 4px 8px -1px rgb(0 0 0 / 0.08),
+    0 2px 4px -1px rgb(0 0 0 / 0.04);
+}
+
+.shadow-lg {
+  box-shadow: 
+    0 8px 16px -3px rgb(0 0 0 / 0.08),
+    0 4px 6px -2px rgb(0 0 0 / 0.04);
+}
+
+/* Status colors for professional use */
+.status-success {
+  background: rgb(34 197 94);
+  color: white;
+}
+
+.status-warning {
+  background: rgb(251 191 36);
+  color: rgb(55 65 81);
+}
+
+.status-error {
+  background: var(--destructive);
+  color: white;
+}
+
+.status-info {
+  background: var(--primary);
+  color: white;
+}
+
+/* Professional gradient */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, rgb(67 56 202) 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--secondary) 0%, rgb(75 85 99) 100%);
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .card {
+    margin: 0.5rem;
+    border-radius: var(--radius-md);
+  }
+  
+  button, .btn {
+    padding: 0.625rem 1.25rem;
+  }
+}

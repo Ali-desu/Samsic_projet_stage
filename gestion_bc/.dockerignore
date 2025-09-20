@@ -1,0 +1,18 @@
+# Maven build outputs
+target
+.mvn
+
+# IDE & editor
+.idea
+*.iml
+
+# Logs
+*.log
+
+# Git
+.git
+.gitignore
+
+# OS junk
+.DS_Store
+Thumbs.db

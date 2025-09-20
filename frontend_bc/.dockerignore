@@ -1,0 +1,18 @@
+## .dockerignore
+# Ignore node_modules directory to prevent copying unnecessary dependencies
+node_modules
+
+# Ignore local editor settings
+.vscode
+
+# Ignore Git repository files
+.git
+
+# Ignore build folder
+dist
+build
+
+# Ignore ESLint, and other configuration files that aren't needed in the final image
+.eslint*
+.editorconfig
+.DS_Store

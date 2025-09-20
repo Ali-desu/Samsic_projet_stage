@@ -1,0 +1,30 @@
+services:
+  backend:
+    build:
+      context: ./gestion_bc
+      dockerfile: Dockerfile
+    container_name: backend
+    env_file:
+      - ./gestion_bc/.env
+    ports:
+      - "9090:9090"
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend_bc
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: "http://localhost:9090/api"  # points to backend service in Docker network
+    container_name: frontend
+    ports:
+      - "5173:80"
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge

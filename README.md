@@ -1,116 +1,116 @@
-# Gestion BDC App
+# Application Gestion BDC
 
-A full-stack application for managing "bon de commande" (purchase orders) data with React frontend and Spring Boot backend, containerized with Docker Compose and connected to Aiven MySQL database.
+Une application full-stack pour la gestion des données de "bon de commande" avec frontend React et backend Spring Boot, conteneurisée avec Docker Compose et connectée à une base de données MySQL Aiven.
 
-## ⚠️ Status
+## ⚠️ Statut
 
-**This application is currently incomplete**
+**Cette application est actuellement incomplète**
 
 
-## Requirements
+## Prérequis
 
-- **Node.js** 18+ (for React frontend)
-- **Java** 17 (for Spring Boot backend)
-- **Maven** (for Java dependency management)
-- **Docker** and **Docker Compose**
-- **Aiven MySQL database credentials** (host, port, username, password)
-- **SMTP credentials** (for email functionality)
-- **JWT secret key** (for authentication)
+- **Node.js** 18+ (pour le frontend React)
+- **Java** 17 (pour le backend Spring Boot)
+- **Maven** (pour la gestion des dépendances Java)
+- **Docker** et **Docker Compose**
+- **Identifiants de base de données MySQL Aiven** (host, port, nom d'utilisateur, mot de passe)
+- **Identifiants SMTP** (pour la fonctionnalité email)
+- **Clé secrète JWT** (pour l'authentification)
 
-## Setup
+## Installation
 
-1. **Clone the repository:**
+1. **Cloner le repository :**
    ```bash
    git clone <repository-url>
    cd App
    ```
 
-2. **Create environment configuration:**
+2. **Créer la configuration d'environnement :**
    ```bash
-   # IMPORTANT: Create your own .env file in gestion_bc folder from .env.example
-   # You must create this file with your own configuration values
+   # IMPORTANT : Créez votre propre fichier .env dans le dossier gestion_bc à partir de .env.example
+   # Vous devez créer ce fichier avec vos propres valeurs de configuration
    cp gestion_bc/.env.example gestion_bc/.env
    ```
    
-   **IMPORTANT:** Replace the placeholder values in `gestion_bc/.env.example` with your actual configuration
+   **IMPORTANT :** Remplacez les valeurs placeholder dans `gestion_bc/.env.example` par votre configuration réelle
    
 
-3. **Install dependencies:**
+3. **Installer les dépendances :**
    ```bash
-   # Frontend dependencies
+   # Dépendances frontend
    cd frontend_bc
    npm install
    cd ..
    
-   # Backend dependencies (Maven will handle this via Docker)
-   # No manual installation needed
+   # Dépendances backend (Maven s'en chargera via Docker)
+   # Aucune installation manuelle nécessaire
    ```
 
-## Running the Application
+## Lancement de l'Application
 
-**Start the entire application with Docker Compose:**
+**Démarrer toute l'application avec Docker Compose :**
 ```bash
 docker-compose up --build
 ```
 
-**Access the application:**
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:9090
+**Accéder à l'application :**
+- Frontend : http://localhost:5173
+- API Backend : http://localhost:9090
 
-## API Endpoints
+## Points de Terminaison API
 
-### Available Endpoints:
-- `GET /api/bon-de-commande` - Retrieve BDC (bon de commande) data
-- `GET /api/site` - Retrieve site data
-- `GET /api/services` - Retrieve service catalog
-- `GET /api/zones` - Retrieve zones (requires authentication)
-- `GET /api/users/id-by-email/{email}` - Get user ID by email
-- `POST /api/auth/login` - User authentication
+### Points de terminaison disponibles :
+- `GET /api/bon-de-commande` - Récupérer les données BDC (bon de commande)
+- `GET /api/site` - Récupérer les données de site
+- `GET /api/services` - Récupérer le catalogue de services
+- `GET /api/zones` - Récupérer les zones (nécessite une authentification)
+- `GET /api/users/id-by-email/{email}` - Obtenir l'ID utilisateur par email
+- `POST /api/auth/login` - Authentification utilisateur
 
-### Authentication:
-Most endpoints require JWT authentication. Include the token in the Authorization header:
+### Authentification :
+La plupart des points de terminaison nécessitent une authentification JWT. Incluez le token dans l'en-tête Authorization :
 ```
-Authorization: Bearer <your-jwt-token>
+Authorization: Bearer <votre-jwt-token>
 ```
 
-## Known Issues
+## Problèmes Connus
 
 
-### Database Connection:
-- Application will fail to start if `.env` file is missing or incorrectly configured
-- Aiven database credentials must be valid and accessible
+### Connexion Base de Données :
+- L'application échouera au démarrage si le fichier `.env` est manquant ou mal configuré
+- Les identifiants de base de données Aiven doivent être valides et accessibles
 
 
 
-## Troubleshooting
+## Dépannage
 
-### Common Problems:
+### Problèmes Courants :
 
-1. **Database Connection Failed:**
-   - Verify Aiven database credentials in `.env`
-   - Ensure database is accessible from your network
-   - Check if database service is running
+1. **Échec de Connexion à la Base de Données :**
+   - Vérifiez les identifiants de base de données Aiven dans `.env`
+   - Assurez-vous que la base de données est accessible depuis votre réseau
+   - Vérifiez si le service de base de données est en cours d'exécution
 
-2. **Frontend Build Errors:**
-   - Run `npm install` in `frontend_bc` directory
-   - Fix TypeScript errors before building
-   - Check for missing dependencies
+2. **Erreurs de Build Frontend :**
+   - Exécutez `npm install` dans le répertoire `frontend_bc`
+   - Corrigez les erreurs TypeScript avant la construction
+   - Vérifiez les dépendances manquantes
 
-3. **500 Internal Server Error:**
-   - Check backend logs in Docker container
-   - Verify environment variables are set correctly
-   - Ensure all required services are running
+3. **Erreur 500 du Serveur Interne :**
+   - Vérifiez les logs backend dans le conteneur Docker
+   - Vérifiez que les variables d'environnement sont correctement définies
+   - Assurez-vous que tous les services requis sont en cours d'exécution
 
-4. **Authentication Issues:**
-   - Verify JWT_SECRET is set in `.env`
-   - Check if user credentials are valid
-   - Ensure token is being sent in requests
+4. **Problèmes d'Authentification :**
+   - Vérifiez que JWT_SECRET est défini dans `.env`
+   - Vérifiez si les identifiants utilisateur sont valides
+   - Assurez-vous que le token est envoyé dans les requêtes
 
 
 ## Contact
 
-For questions or issues related to this project, please contact the development team via email. Support will be available for one week after handover.
+Pour des questions ou des problèmes liés à ce projet, veuillez me contacter par email. Le support sera disponible pendant une semaine après la remise.
 
 ---
 
-**Note:** This application is in development and may require significant work to become production-ready. Review all code and configurations before deployment.
+**Note :** Cette application est en développement et peut nécessiter un travail important pour devenir prête pour la production. Examinez tout le code et les configurations avant le déploiement.

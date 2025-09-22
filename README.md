@@ -34,6 +34,7 @@ Une application full-stack pour la gestion des données de "bon de commande" ave
    
    **IMPORTANT :** Remplacez les valeurs placeholder dans `gestion_bc/.env.example` par votre configuration réelle
    
+   **IMPORTANT :** Les tables `services` et `sites` de la base de données doivent être peuplées manuellement avec des données SQL avant de pouvoir utiliser l'application.
 
 3. **Installer les dépendances :**
    ```bash
